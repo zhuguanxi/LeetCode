@@ -12,7 +12,7 @@
 
 ## Problem Description
 
-![image]()
+![Example]()
 
 
 ### WAY 1:
@@ -22,3 +22,4 @@
 * N：nums 的長度 (1 <= nums.length <= 105)
 * Time Complexity $O(N^2)$
 * Space Complexity $O(1)$
+
