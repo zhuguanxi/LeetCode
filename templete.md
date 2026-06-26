@@ -1,14 +1,12 @@
-# 
+# 3737. Count Subarrays With Majority Element I
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-brightgreen)
 ![Medium](https://img.shields.io/badge/Difficulty-Medium-orange)
-![Hard](https://img.shields.io/badge/Difficulty-Hard-red)
 ![Topics](https://img.shields.io/badge/%F0%9F%8F%B7%EF%B8%8F-Topics-blue)
 ![Companies](https://img.shields.io/badge/%F0%9F%94%92-Companies-yellow)
 ![Hint](https://img.shields.io/badge/%F0%9F%92%A1-Hint-lightgrey)
 
 ## Problem Link
-[Problem]()
+[Problem](https://leetcode.com/problems/count-subarrays-with-majority-element-i/description/?envType=daily-question&envId=2026-06-25)
 
 ## Problem Description
 
