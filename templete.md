@@ -1,25 +1,62 @@
-# 
+# 1140. Stone Game II
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-brightgreen)
 ![Medium](https://img.shields.io/badge/Difficulty-Medium-orange)
-![Hard](https://img.shields.io/badge/Difficulty-Hard-red)
 ![Topics](https://img.shields.io/badge/%F0%9F%8F%B7%EF%B8%8F-Topics-blue)
 ![Companies](https://img.shields.io/badge/%F0%9F%94%92-Companies-yellow)
 ![Hint](https://img.shields.io/badge/%F0%9F%92%A1-Hint-lightgrey)
 
 ## Problem Link
-[Problem]()
+[Problem](https://leetcode.com/problems/stone-game-ii/description/?envType=daily-question&envId=2026-08-09)
 
 ## Problem Description
+Alice and Bob continue their games with piles of stones. There are a number of piles arranged in a row, and each pile has a positive integer number of stones piles[i]. The objective of the game is to end with the most stones.
 
-![Example]()
+Alice and Bob take turns, with Alice starting first.
 
+On each player's turn, that player can take all the stones in the first X remaining piles, where 1 <= X <= 2M. Then, we set M = max(M, X). Initially, M = 1.
+
+The game continues until all the stones have been taken.
+
+Assuming Alice and Bob play optimally, return the maximum number of stones Alice can get.
 
 ### WAY 1:
+* DP ...
 ```
+class Solution {
+public:
+    int dfs(vector<int>& suffix_sum, vector<vector<int>>& memo, int i, int M, int n)
+    {
+        if (i + 2*M >= n)
+            return suffix_sum[i];
 
+        if (memo[i][M] != -1) 
+            return memo[i][M];
+
+        int min_opponent_score = INT_MAX; 
+        for (int X = 1; X <= 2 * M; ++X) {
+            int opponent_score = dfs(suffix_sum, memo, i + X, max(M, X), n);
+            min_opponent_score = min(min_opponent_score, opponent_score);
+        }
+        memo[i][M] = suffix_sum[i] - min_opponent_score;
+        return memo[i][M];
+    }
+    int stoneGameII(vector<int>& piles) {
+        int n = piles.size();
+        vector<int> suffix_sum(n, 0);
+
+        suffix_sum[n-1] = piles[n-1];
+        for (int i=n-2; i>=0; i--)
+        {
+            suffix_sum[i] = suffix_sum[i+1] + piles[i];
+        }
+
+        vector<vector<int>> memo(n, vector<int>(n+1, -1));
+    
+        return dfs(suffix_sum, memo, 0, 1, n);
+    }
+};
 ```
-* n：nums 的長度 (1 <= nums.length <= 105)
-* Time Complexity $O(N^2)$
-* Space Complexity $O(1)$
+* n：poles 的長度 (1 <= piles.length <= 100)
+* Time Complexity $O(n^2)$
+* Space Complexity $O(n^2)$
 
